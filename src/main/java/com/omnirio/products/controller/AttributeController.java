@@ -22,7 +22,7 @@ public class AttributeController {
 	@Autowired
 	private AttributeService attributeService;
 
-	@PostMapping(value = "/attribute", consumes = MediaType.APPLICATION_JSON_VALUE, 
+	@PostMapping(value = "/attribute/{categoryId}", consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createCategoryAttribute(
 			@PathVariable @Min(1) Long categoryId,
@@ -36,7 +36,7 @@ public class AttributeController {
 		}
 	}
 	
-	@PostMapping(value = "/attribute", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/attribute/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getCategoryAttribute(@PathVariable @Min(1) Long categoryId) {
 		try {
 			return new ResponseEntity<>(attributeService

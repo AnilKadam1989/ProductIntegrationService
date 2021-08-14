@@ -23,7 +23,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@PostMapping(value = "/product", consumes = MediaType.APPLICATION_JSON_VALUE, 
+	@PostMapping(value = "/product/{categoryId}", consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	private ResponseEntity<?> createProduct(
 			@PathVariable @Min(1) Long categoryId,
@@ -37,7 +37,7 @@ public class ProductController {
 		}
 	}
 	
-	@GetMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/product/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private ResponseEntity<?> getProduct(@PathVariable @Min(1) Long productId) {
 		try {
 			return new ResponseEntity<ProductResponse>(productService
